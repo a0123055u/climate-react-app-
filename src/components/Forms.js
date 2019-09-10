@@ -4,10 +4,11 @@ import React from "react";
 class Forms extends React.Component{
  render(){
     return (
-		<div>
-			Look below Table for more details
-
-		</div>
+		<form onSubmit = {this.props.getWeather}>
+			<input type="text" name="city" placeholder ="city..."/>
+			<input type="text" name="country" placeholder ="Country..."/>
+			<button>Get Weather</button>
+		</form>
 		);
 
 }
