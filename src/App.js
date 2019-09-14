@@ -3,9 +3,13 @@ import Titles from "./components/Titles";
 import Forms from"./components/Forms";
 import Weather from"./components/Weather";
 import TableDisplay from"./components/TableDisplay";
+import BackGround from"./components/BackGround";
 import 'jquery/src/jquery';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
+
+// import { ImageBackground, Text } from 'react-native';
+
 const api_key = "a8f77e1f023b4ff1ac1737309dcd3a86";
 class App extends React.Component {
 state = {
@@ -30,7 +34,7 @@ getWeather = async (e) =>{
     const data = await api_call.json();
     console.log(data);
       this.setState({
-        temperature: data.main.temp,
+        temperature: data.main.temp/10,
         city: data.name,
         country: data.sys.country,
         humidity: data.main.humidity,
@@ -52,8 +56,9 @@ getWeather = async (e) =>{
   render(){
     return (
       <div >
-      <Titles/>
-      <Forms getWeather = {this.getWeather}/>
+      <BackGround >
+       <Titles />
+       <Forms getWeather = {this.getWeather}/>
         <Weather temperature = {this.state.temperature}
                 city = {this.state.city}
                 country = {this.state.country}
@@ -61,6 +66,9 @@ getWeather = async (e) =>{
                 description = {this.state.description}
                 error = {this.state.error}
        />
+      </BackGround>
+     
+      
 
     </div>
     );
