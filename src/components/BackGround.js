@@ -7,7 +7,7 @@ import t1 from '../t1.jpg'
 class BackGround extends React.Component{
   render(){
     return (
-    	<div>
+    	<div>Test
     	{this.props.children}<img src={t1} />
     	</div>
     	)
