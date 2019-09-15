@@ -2,7 +2,7 @@ import React from "react";
 import Titles from "./components/Titles";
 import Forms from"./components/Forms";
 import Weather from"./components/Weather";
-import TableDisplay from"./components/TableDisplay";
+
 import BackGround from"./components/BackGround";
 import 'jquery/src/jquery';
 import 'bootstrap/dist/css/bootstrap.css';
