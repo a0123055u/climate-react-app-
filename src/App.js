@@ -2,6 +2,7 @@ import React from "react";
 import Titles from "./components/Titles";
 import Forms from"./components/Forms";
 import Weather from"./components/Weather";
+import FileUpload from"./components/FileUpload";
 
 import BackGround from"./components/BackGround";
 import 'jquery/src/jquery';
@@ -22,6 +23,11 @@ state = {
 
 
  }
+//  onChangeHandler = event =>{
+
+//     console.log(event.target.files[0])
+
+// }
 
 getWeather = async (e) =>{
   e.preventDefault();
@@ -34,12 +40,12 @@ getWeather = async (e) =>{
     const data = await api_call.json();
     console.log(data);
       this.setState({
-        temperature: data.main.temp/10,
+        temperature: data.main?data.main.temp/10:undefined,
         city: data.name,
-        country: data.sys.country,
-        humidity: data.main.humidity,
-        description:data.weather[0].description,
-        error: ''
+        country: data.sys?data.sys.country:undefined,
+        humidity: data.main?data.main.humidity:undefined,
+        description:data.weather?data.weather[0].description:undefined,
+        error: !(this.state.temperature || this.state.country || this.state.humidity || this.state.description)?(data.message?data.message+"! and country not Found !":""):''
     });
   }  else{
       this.setState({
@@ -53,6 +59,7 @@ getWeather = async (e) =>{
   }
 
 }
+
   render(){
     return (
       <div >
@@ -66,6 +73,7 @@ getWeather = async (e) =>{
                 description = {this.state.description}
                 error = {this.state.error}
        />
+       <FileUpload></FileUpload>
       </BackGround>
      
       

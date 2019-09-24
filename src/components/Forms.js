@@ -17,6 +17,7 @@ class Forms extends React.Component{
 			<input type="text" name="country" placeholder ="Country..." class="form-control"/>
 			
 			</div>
+			
 			<button class="btn btn-primary">Get Weather</button>
 		</form>
 		
